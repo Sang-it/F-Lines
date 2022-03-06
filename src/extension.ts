@@ -32,8 +32,8 @@ export function activate(context: ExtensionContext) {
             ...activeEditor.document
               .getText()
               .split("\n")
-              .filter((line) => line.trim().length > 0)
-              .map((content, index) => new Line(content.toLowerCase(), index)),
+              .map((content, index) => new Line(content.toLowerCase(), index))
+              .filter((line) => line.label.trim().length > 0),
           ];
           let userInput = "";
           disposables.push(
