@@ -32,7 +32,7 @@ export function activate(context: ExtensionContext) {
             ...activeEditor.document
               .getText()
               .split("\n")
-              .map((content, index) => new Line(content.toLowerCase(), index))
+              .map((content, index) => new Line(content, index))
               .filter((line) => line.label.trim().length > 0),
           ];
           let userInput = "";
@@ -40,7 +40,7 @@ export function activate(context: ExtensionContext) {
             quickPick.onDidChangeValue((v) => (userInput = v.toLowerCase())),
             quickPick.onDidChangeSelection((items) => {
               const { label, line } = items[0];
-              const leftRangeDelta = label.indexOf(userInput);
+              const leftRangeDelta = label.toLowerCase().indexOf(userInput);
               const rightRangeDelta = leftRangeDelta + userInput.length;
               const range = activeEditor.document.lineAt(line).range;
               activeEditor.selection = new Selection(
