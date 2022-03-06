@@ -32,6 +32,7 @@ export function activate(context: ExtensionContext) {
             ...activeEditor.document
               .getText()
               .split("\n")
+              .filter((line) => line.trim().length > 0)
               .map((content, index) => new Line(content.toLowerCase(), index)),
           ];
           let userInput = "";
