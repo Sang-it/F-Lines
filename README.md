@@ -1,6 +1,6 @@
 # F lines
 
-Get to the word you want to.
+Visual Studio Code word-search extension for people used to fzf-vim.
 
 Bad Quality Gif - Cause I couldn't find a good gif converter.
 
