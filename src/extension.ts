@@ -26,7 +26,7 @@ export function activate(context: ExtensionContext) {
         return window.showInformationMessage(`No active editor`, "OK");
       const disposables: Disposable[] = [];
       try {
-        return await new Promise(() => {
+        return await new Promise<void>((resolve) => {
           const quickPick = window.createQuickPick<Line>();
           quickPick.items = [
             ...activeEditor.document
@@ -48,6 +48,7 @@ export function activate(context: ExtensionContext) {
                 range.end.with({ character: leftRangeDelta })
               );
               activeEditor.revealRange(range);
+              resolve();
               quickPick.hide();
             }),
             quickPick.onDidHide(() => {
